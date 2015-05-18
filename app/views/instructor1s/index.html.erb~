@@ -1,0 +1,40 @@
+<h1>Listing all Instructors</h1>
+
+<table>
+  <tr>
+    <th>IDD</th>
+    <th>Email</th>
+    <th>Date of birth</th>
+    <th>Full name</th>
+    <th>Instructor's Description</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @instructor1s.each do |instructor1| %>
+  <tr>
+    <td><%= instructor1.id %></td>
+    <td><%= instructor1.email %></td>
+    <td><%= instructor1.DoB %></td>
+    <td><%= instructor1.Full_Name %></td>
+    <td><%= instructor1.Your_Description %></td>
+    <td><%= link_to 'Show', instructor1 %></td>
+    <td><%= link_to 'Edit', edit_instructor1_path(instructor1) %></td>
+    <td><%= link_to 'Destroy', instructor1, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%if @who!=-1 %>
+	<% if @who==1 %>	
+		<%= link_to 'Go Back to my profile', '/instructor1s/'+@idd %>
+		<%= link_to 'Add a course', '/instructor1s/'+@idd %>
+	<% elsif @who==2  %>
+		<%= link_to 'Go Back to my profile', '/courses' %>
+	<% end %>
+<% else %>
+	<%= link_to 'Go Back to login/signup page', '/home'%>
+<% end %>

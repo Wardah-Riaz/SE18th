@@ -1,0 +1,39 @@
+<h1>Discussion Forum</h1>
+
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Name</th>
+    <th>Message</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @discussions.each do |discussion| %>
+  <tr>
+    <td><%= discussion.Date %></td>
+    <td><%= discussion.Name %></td>
+    <td><%= discussion.Message %></td>
+    <td><%= link_to 'Show', discussion %></td>
+    <td><%= link_to 'Edit', edit_discussion_path(discussion) %></td>
+    <td><%= link_to 'Destroy', discussion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%if @who!=-1 %>
+<%= render 'form' %>
+<% end %>
+<%if @who!=-1 %>
+<h3>Post to this Forum </h3>
+	<% if @who==1 %>	
+		<%= link_to 'Go Back to my profile', '/instructor1s/'+@idd %>
+	<% elsif @who==2  %>
+		<%= link_to 'Go Back to my profile', '/students/'+@idd %>
+	<% end %>
+<% else %>
+	<%= link_to 'Go Back to login/signup page', '/home'%>
+<% end %>

@@ -1,0 +1,17 @@
+class ApplicationController < ActionController::Base
+  protect_from_forgery
+@who=session[:who]
+if @who!=-1
+	if @who==1
+		@s=Instructor1.find(session[:user_id])
+		@iddarray=Instructor1.where(email: @s.email)
+		@idd=@iddarray[0].id.to_s
+	end
+	if @who==2
+		@s=Student.find(session[:user_id])
+		@iddarray=Student.where(email: @s.email)
+		@idd=@iddarray[0].id.to_s
+	end
+end
+
+end

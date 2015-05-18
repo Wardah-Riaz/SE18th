@@ -1,0 +1,17 @@
+Given /^a valid disscussion$/ do
+  @disscussion = Disscussion.create!({
+             :Date => "2015-05-12",
+             :Name => "Alice_12@gmail.com",
+             :Message => "This app is amazing!"
+             #:password_confirmation => "12345678"
+           })
+  #flunk "Unimplemented"
+end
+
+Given /the following discussions exist/ do |disscussions_table|
+  disscussions_table.hashes.each do |disscussion|
+    Disscussion.create disscussion
+  end
+end
+
+
